@@ -322,7 +322,7 @@ func (d *Dialer) Dial(urlStr string, requestHeader http.Header) (*Conn, *http.Re
 		}
 	}
 
-	if u.Scheme == "https" {
+	/*if u.Scheme == "https" {
 		cfg := cloneTLSConfig(d.TLSClientConfig)
 		if cfg.ServerName == "" {
 			cfg.ServerName = hostNoPort
@@ -340,7 +340,7 @@ func (d *Dialer) Dial(urlStr string, requestHeader http.Header) (*Conn, *http.Re
 		//	}
 		//}
 	}
-
+	*/
 	conn := newConn(netConn, false, d.ReadBufferSize, d.WriteBufferSize)
 
 	if err := req.Write(netConn); err != nil {
