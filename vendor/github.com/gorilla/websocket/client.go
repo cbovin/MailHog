@@ -332,6 +332,7 @@ func (d *Dialer) Dial(urlStr string, requestHeader http.Header) (*Conn, *http.Re
 		if err := tlsConn.Handshake(); err != nil {
 			return nil, nil, err
 		}
+		cfg.InsecureSkipVerify = true
 		if !cfg.InsecureSkipVerify {
 			if err := tlsConn.VerifyHostname(cfg.ServerName); err != nil {
 				return nil, nil, err
