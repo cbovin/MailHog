@@ -334,11 +334,11 @@ func (d *Dialer) Dial(urlStr string, requestHeader http.Header) (*Conn, *http.Re
 			return nil, nil, err
 		}
 
-		if !cfg.InsecureSkipVerify {
-			if err := tlsConn.VerifyHostname(cfg.ServerName); err != nil {
-				return nil, nil, err
-			}
-		}
+		//if !cfg.InsecureSkipVerify {
+		//	if err := tlsConn.VerifyHostname(cfg.ServerName); err != nil {
+		//		return nil, nil, err
+		//	}
+		//}
 	}
 
 	conn := newConn(netConn, false, d.ReadBufferSize, d.WriteBufferSize)
