@@ -1,6 +1,7 @@
 package api
 
 import (
+	"crypto/tls"
 	"encoding/base64"
 	"encoding/json"
 	"net/http"
@@ -330,6 +331,10 @@ func (apiv1 *APIv1) release_one(w http.ResponseWriter, req *http.Request) {
 			w.WriteHeader(400)
 			return
 		}
+	}
+
+	smtp.TLSConfig = &tls.Config{
+		InsecureSkipVerify: true,
 	}
 
 	err = smtp.SendMail(cfg.Host+":"+cfg.Port, auth, "nobody@"+apiv1.config.Hostname, []string{cfg.Email}, bytes)
